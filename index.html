@@ -3,7 +3,7 @@
 </head>
 <body oninput=f();>
     <form>
-        <input type=radio name=n id=1 onclick=location.href='#i' checked><label for=1>VIEW</label><input type=radio name=n id=2 onclick=location.href='#h'><label for=2>HTML</label><input type=radio name=n id=3 onclick=location.href='#c'><label for=3>CSS</label><input type=radio name=n id=4 onclick=location.href='#j'><label for=4>JS</label>
+        <input type=radio name=n id=1 onclick=location.href="#i" checked><label for=1>VIEW</label><input type=radio name=n id=2 onclick=location.href="#h"><label for=2>HTML</label><input type=radio name=n id=3 onclick=location.href="#c"><label for=3>CSS</label><input type=radio name=n id=4 onclick=location.href="#j"><label for=4>JS</label>
     </form>
     <iframe id=i></iframe>
     <textarea id=h placeholder=HTML></textarea>
@@ -12,7 +12,7 @@
 </body>
 <style>
     body {
-        overflow: hidden;
+        overflow: hidden
     }
     * {
         font-family: sans-serif;
@@ -22,7 +22,7 @@
         margin: 0;
         padding: 0;
         border: 0;
-        box-sizing: border-box;
+        box-sizing: border-box
     }
     label {
         width: 25%;
@@ -32,75 +32,70 @@
         display: inline-block;
         text-decoration: none;
         cursor: pointer;
-        transition: .3s;
+        transition: .3s
     }
     input:checked + label {
        color: #424242;
-        background: rgba(151,195,198,.9);
+        background: rgba(151,195,198,.9)
     }
     textarea,iframe,input,label:hover {
-        background: rgba(66, 66, 66, .2);
+        background: rgba(66, 66, 66, .2)
     } 
     textarea,iframe,input {
         width: 100%;
         height: calc(100% - 2rem);
         display: none;
         resize: none;
-        outline: none;
+        outline: none
     }
     @media (prefers-color-scheme: dark) {
         *{
             color: #e5e1dc;
-            background: #424242;
+            background: #424242
         }
         input,label {
-            background: rgba(229, 225, 220, .2);
+            background: rgba(229, 225, 220, .2)
         }
     }
     iframe {
-        background: #fff;
+        background: #fff
     }
     textarea {
         font-family: monospace;
-        padding: 1rem;
+        padding: 1rem
     }
     :target {
-        display: block;
+        display: block
     }
 </style>
 <script>
     <!--
-    let params = new URLSearchParams(location.search),paraH,paraC,paraJ;
-    if(!params.has("h")){
-          params.set('h','');
+    let para = new URLSearchParams(location.search),paraH,paraC,paraJ;
+    if(para.has("h")){
+        paraH = para.get("h")
+    } else {
+        para.set("h","");
     }
-    if(!params.has("c ")){
-         params.set('c','');
+    if(para.has("c")){
+      paraC = para.get("c")
+    } else {
+      para.set("c","")
     }
-        params.set('c','');
-    params.set('j','');
-    if(params.has("h")){paraH = params.get("h")};
-    if(params.has("c")){paraC = params.get("c")};
-    if(params.has("j")){paraJ = params.get("j")};
+    if(para.has("j")){
+      paraJ = para.get("j")
+    } else {
+      para.set("j","")
+    }
     h.value = decodeURI(paraH);
     c.value = decodeURI(paraC);
     j.value = decodeURI(paraJ);
     function f(){
         i.srcdoc = h.value+"<style>"+c.value+"</style><script>"+j.value+"</script>";
-        if(h.value){
-          params.delete('h');
-          params.set('h', encodeURI(h.value));
-        }
-        if(c.value){
-          params.delete('c');
-          params.set('c', encodeURI(c.value));
-        }
-        if(j.value){
-          params.delete('j');
-          params.set('j', encodeURI(j.value));
-        }
-        window.history.replaceState({}, '', `${location.pathname}?${params}`);
+        para.set("h", encodeURI(h.value));
+        para.set("c", encodeURI(c.value));
+        para.set("j", encodeURI(j.value));
+        window.history.replaceState({}, "", `${location.pathname}?${para}`);
     }f();
-    location.href='#i';
+    location.href="#i";
     -->
 </script>
