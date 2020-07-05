@@ -71,31 +71,36 @@
 <script>
     <!--
     let params = new URLSearchParams(location.search),paraH,paraC,paraJ;
-    params.append('h','');
-    params.append('c','');
-    params.append('j','');
+    if(!params.has("h")){
+          params.set('h','');
+    }
+    if(!params.has("c ")){
+         params.set('c','');
+    }
+        params.set('c','');
+    params.set('j','');
     if(params.has("h")){paraH = params.get("h")};
     if(params.has("c")){paraC = params.get("c")};
     if(params.has("j")){paraJ = params.get("j")};
     h.value = decodeURI(paraH);
     c.value = decodeURI(paraC);
     j.value = decodeURI(paraJ);
-    location.href='#i';
     function f(){
         i.srcdoc = h.value+"<style>"+c.value+"</style><script>"+j.value+"</script>";
         if(h.value){
           params.delete('h');
-          params.append('h', encodeURI(h.value));
+          params.set('h', encodeURI(h.value));
         }
         if(c.value){
           params.delete('c');
-          params.append('c', encodeURI(c.value));
+          params.set('c', encodeURI(c.value));
         }
         if(j.value){
           params.delete('j');
-          params.append('j', encodeURI(j.value));
+          params.set('j', encodeURI(j.value));
         }
         window.history.replaceState({}, '', `${location.pathname}?${params}`);
     }f();
+    location.href='#i';
     -->
 </script>
