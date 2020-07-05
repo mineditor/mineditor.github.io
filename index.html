@@ -35,11 +35,11 @@
         transition: .3s
     }
     input:checked + label {
-       color: #424242;
+        color: #424242;
         background: rgba(151,195,198,.9)
     }
     textarea,iframe,input,label:hover {
-        background: rgba(66, 66, 66, .2)
+        background: #dedad5
     } 
     textarea,iframe,input {
         width: 100%;
@@ -53,8 +53,8 @@
             color: #e5e1dc;
             background: #424242
         }
-        input,label {
-            background: rgba(229, 225, 220, .2)
+        textarea,iframe,input,label:hover {
+            background: #4b4a4a
         }
     }
     iframe {
@@ -70,25 +70,22 @@
 </style>
 <script>
     <!--
-    let para = new URLSearchParams(location.search),paraH,paraC,paraJ;
+        let para = new URLSearchParams(location.search);
     if(para.has("h")){
-        paraH = para.get("h")
+        h.value = decodeURI(para.get("h"))
     } else {
         para.set("h","");
     }
     if(para.has("c")){
-      paraC = para.get("c")
+        c.value = decodeURI(para.get("c"))
     } else {
-      para.set("c","")
+        para.set("c","")
     }
     if(para.has("j")){
-      paraJ = para.get("j")
+        j.value = decodeURI(para.get("j"))
     } else {
-      para.set("j","")
+        para.set("j","")
     }
-    h.value = decodeURI(paraH);
-    c.value = decodeURI(paraC);
-    j.value = decodeURI(paraJ);
     function f(){
         i.srcdoc = h.value+"<style>"+c.value+"</style><script>"+j.value+"</script>";
         para.set("h", encodeURI(h.value));
@@ -97,5 +94,5 @@
         window.history.replaceState({}, "", `${location.pathname}?${para}`);
     }f();
     location.href="#i";
-    -->
+-->
 </script>
