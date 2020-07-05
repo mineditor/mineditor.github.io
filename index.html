@@ -11,9 +11,9 @@
             <input type=radio name=n id=1 onclick=location.href="#i" checked><label for=1>VIEW</label><input type=radio name=n id=2 onclick=location.href="#h"><label for=2>HTML</label><input type=radio name=n id=3 onclick=location.href="#c"><label for=3>CSS</label><input type=radio name=n id=4 onclick=location.href="#j"><label for=4>JS</label>
         </form>
         <iframe id=i></iframe>
-        <textarea id=h placeholder=HTML></textarea>
-        <textarea id=c placeholder=CSS></textarea>
-        <textarea id=j placeholder=JS></textarea>
+        <textarea id=h placeholder=HTML wrap=off></textarea>
+        <textarea id=c placeholder=CSS wrap=off></textarea>
+        <textarea id=j placeholder=JS wrap=off></textarea>
     </body>
     <style>
         html,body {
@@ -24,7 +24,7 @@
         * {
             font-family: sans-serif;
             font-size: inherit;
-            color: #424242;
+            color: #938f8a;
             background: #e5e1dc;
             margin: 0;
             padding: 0;
@@ -57,7 +57,6 @@
         }
         @media (prefers-color-scheme: dark) {
             *{
-                color: #e5e1dc;
                 background: #424242
             }
             textarea,iframe,input,label:hover {
