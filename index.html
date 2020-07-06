@@ -97,19 +97,20 @@
     } else {
         para.set("j", "")
     }
-
     function f() {
         if (timeoutId) return;
         timeoutId = setTimeout(function() {
             timeoutId = 0;
+            ff();
+        }, 3000);
+    }
+    function ff() {
             i.srcdoc = h.value + "<style>" + c.value + "</style><script>" + j.value + "</script>";
             para.set("h", encodeURI(h.value));
             para.set("c", encodeURI(c.value));
             para.set("j", encodeURI(j.value));
             window.history.replaceState({}, "", `${location.pathname}?${para}`);
-        }, 3000);
-    }
-    f();
+    }ff();
     location.href = "#i";
     -->
 </script>
