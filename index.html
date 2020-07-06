@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>minEditor</title>
     </head>
-    <body oninput=f();>
+    <body>
         <form>
             <input type=radio name=n id=1 onclick=location.href="#i" checked><label for=1>VIEW</label><input type=radio name=n id=2 onclick=location.href="#h"><label for=2>HTML</label><input type=radio name=n id=3 onclick=location.href="#c"><label for=3>CSS</label><input type=radio name=n id=4 onclick=location.href="#j"><label for=4>JS</label>
         </form>
@@ -94,11 +94,12 @@
         }
         function f(){
             i.srcdoc = h.value+"<style>"+c.value+"</style><script>"+j.value+"</script>";
-    para.set("h", encodeURI(h.value));
-    para.set("c", encodeURI(c.value));
-    para.set("j", encodeURI(j.value));
-    window.history.replaceState({}, "", `${location.pathname}?${para}`);
-    }f();
+            para.set("h",encodeURI(h.value));
+            para.set("c",encodeURI(c.value));
+            para.set("j",encodeURI(j.value));
+            window.history.replaceState({}, "", `${location.pathname}?${para}`);
+            setTimeout(f,1000);
+        }f();
     location.href="#i";
     -->
     </script>
