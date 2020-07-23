@@ -105,7 +105,7 @@
         }, 3000);
     }
     function ff() {
-            i.srcdoc = h.value + "<style>*{margin:0;paddig:0}html,body{height:100%}" + c.value + "</style><script>" + j.value + "</script>";
+            i.srcdoc = h.value + "<button onclick="window.location.reload();">Reload</button><style>*{margin:0;paddig:0}html,body{height:100%}button{padding:10px;position:fixed;bottom:20px;right:20px}" + c.value + "</style><script>" + j.value + "</script>";
             para.set("h", encodeURI(h.value));
             para.set("c", encodeURI(c.value));
             para.set("j", encodeURI(j.value));
