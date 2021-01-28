@@ -4,19 +4,18 @@
     let para = new URLSearchParams(location.search),
         timeoutId;
     if (para.has("h")) {
-        h.value = decodeURI(para.get("h"))
-    } else {
-        para.set("h", "");
+      h.value = decodeURI(para.get("h"))
     }
     if (para.has("c")) {
-        c.value = decodeURI(para.get("c"))
-    } else {
-        para.set("c", "")
+      c.value = decodeURI(para.get("c"))
     }
     if (para.has("j")) {
-        j.value = decodeURI(para.get("j"))
-    } else {
-        para.set("j", "")
+      j.value = decodeURI(para.get("j"))
+    }
+    if (para.has("s")) {
+      if (para.get("s")) {
+        i.style.width = decodeURI(para.get("s"))+"%"
+      }
     }
     function f() {
         i.srcdoc = h.value + "<style>*{margin:0;paddig:0}html,body{height:100%}" + c.value + "</style><script>" + j.value + "</script>";
@@ -24,13 +23,14 @@
         timeoutId = setTimeout(function() {
             timeoutId = 0;
             ff();
-        }, 3000);
+        }, 1000);
     }f();
     function ff() {
-            para.set("h", encodeURI(h.value));
-            para.set("c", encodeURI(c.value));
-            para.set("j", encodeURI(j.value));
-            window.history.replaceState({}, "", `${location.pathname}?${para}`);
+      para.set("s", Math.round(i.clientWidth*100/window.innerWidth));
+      para.set("c", encodeURI(c.value));
+      para.set("j", encodeURI(j.value));
+      para.set("h", encodeURI(h.value));
+      window.history.replaceState({}, "", `${location.pathname}?${para}`);
     }
  -->
  </script>
