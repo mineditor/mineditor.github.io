@@ -6,7 +6,7 @@
   <meta name=viewport content="width=device-width,initial-scale=1">
   <title>minEditor</title>
 </head>
-<body oninput="i.srcdoc=h.value+'<style>'+c.value+'</style><script>'+j.value+'</script>'">
+<body oninput=ff();>
   <iframe id=i></iframe>
   <section>
     <textarea id=h placeholder=HTML wrap=off></textarea>
@@ -61,6 +61,7 @@
   }
 </style>
 <script>
+<!--  
       let para = new URLSearchParams(location.search),
           ar = ["h","c","j","s"];
       for(let e of ar) {
@@ -86,9 +87,15 @@
           }
         }
         window.history.replaceState({}, "", `${location.pathname}?${para}`);
+        navigator.clipboard.writeText(location.href);
         if(window != window.parent) {
           window.open(location.href, '_blank')
         }
       }
+      var isTesting = false;
+      function ff() {
+        i.srcdoc = h.value + "<style>*{margin:0;paddig:0}html,body{height:100%}" + c.value + "</style><script>" + j.value + "</script>";
+      }ff();
+-->
 </script>
 </html>
