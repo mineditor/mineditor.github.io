@@ -98,6 +98,7 @@
         para.set("j", "")
     }
     function f() {
+        i.srcdoc = h.value + "<style>*{margin:0;paddig:0}html,body{height:100%}" + c.value + "</style><script>" + j.value + "</script>";
         if (timeoutId) return;
         timeoutId = setTimeout(function() {
             timeoutId = 0;
@@ -105,7 +106,6 @@
         }, 3000);
     }
     function ff() {
-            i.srcdoc = h.value + "<style>*{margin:0;paddig:0}html,body{height:100%}" + c.value + "</style><script>" + j.value + "</script>";
             para.set("h", encodeURI(h.value));
             para.set("c", encodeURI(c.value));
             para.set("j", encodeURI(j.value));
