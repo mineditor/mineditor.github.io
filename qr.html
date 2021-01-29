@@ -8,7 +8,7 @@
 </head>
 <body><img id=qr></body>
 <script>
-fetch("https://is.gd/create.php?format=simple&url=" + location.host + location.search)
+fetch("https://is.gd/create.php?format=simple&url=https://" + decodeURI(location.host + location.search))
   .then(
     function(u) {
       return u.json();
