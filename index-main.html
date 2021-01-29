@@ -4,6 +4,8 @@
   <meta charset=utf-8>
   <meta name=robots content="noindex,nofollow,noarchive">
   <meta name=viewport content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/vs.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
   <title>minEditor</title>
 </head>
 <body oninput=ff();>
@@ -79,6 +81,11 @@
           }
         }
       }
+      var elms = document.getElementsByClassName( 'textarea' ) ;
+for( var i=0 , l=elms.length ; l>i ; i++ )
+{
+	hljs.highlightBlock( elms[i] ) ;
+}
       function f() {
         para.set("s", Math.round(i.clientWidth*100/window.innerWidth));
         for(let e of ar) {
