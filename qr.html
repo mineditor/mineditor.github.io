@@ -6,7 +6,10 @@
   <meta name=viewport content="width=device-width,initial-scale=1">
   <title>minEditor</title>
 </head>
-<body><img id=qr></body>
+<body>
+<img id=qr>
+<input type=text id=url onfocus="this.select();" readonly>
+</body>
 <script>
 fetch("https://is.gd/create.php?format=json&url=https://" + encodeURIComponent(location.host + location.search))
   .then(
@@ -17,6 +20,7 @@ fetch("https://is.gd/create.php?format=json&url=https://" + encodeURIComponent(l
   .then(
     function(e) {
       qr.src="https://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=" + e.shorturl;
+      url.value = e.shorturl;
     }
   )
 </script>
