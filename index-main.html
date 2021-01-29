@@ -4,11 +4,9 @@
   <meta charset=utf-8>
   <meta name=robots content="noindex,nofollow,noarchive">
   <meta name=viewport content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/vs.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
   <title>minEditor</title>
 </head>
-<body oninput=ff();>
+<body oninput=ff(); onbeforeunload=fff();>
   <iframe id=i></iframe>
   <section>
     <textarea id=h placeholder=HTML wrap=off></textarea>
@@ -52,7 +50,11 @@
   		width: 100%;
   		resize: none;
   		outline: none;
+  		border: 0;
   		padding: 1rem
+  }
+  textarea + textarea{
+    border-top:solid #424242 2px
   }
   svg {
     fill: #fff;
@@ -64,45 +66,46 @@
 </style>
 <script>
 <!--  
-      let para = new URLSearchParams(location.search),
-          ar = ["h","c","j","s"];
-      for(let e of ar) {
-        if(e == "s"){
-          if (para.get(e)) {
-            i.style.width = decodeURI(para.get(e))+"%"
-          }
-        } else {
-          if (para.has(e)) {
-            if(para.get(e) == "none"){
-              eval(e).style.display = "none"
-            } else {
-              eval(e).value = decodeURI(para.get(e));
-            }
-          }
-        }
+let para = new URLSearchParams(location.search),
+  ar = ["h", "c", "j", "s"],t,
+  url = new URL(window.location);
+for (let e of ar) {
+  if (e == "s") {
+    if (para.get(e)) {
+      i.style.width = decodeURI(para.get(e)) + "%"
+    }
+  } else {
+    if (para.has(e)) {
+      if (para.get(e) == "none") {
+        eval(e).style.display = "none"
       }
-      var elms = document.getElementsByClassName( 'textarea' ) ;
-for( var i=0 , l=elms.length ; l>i ; i++ )
-{
-	hljs.highlightBlock( elms[i] ) ;
+      eval(e).value = decodeURI(para.get(e))
+    }
+  }
 }
-      function f() {
-        para.set("s", Math.round(i.clientWidth*100/window.innerWidth));
-        for(let e of ar) {
-          if(e != "s"){
-            para.set(e, encodeURI(eval(e).value));
-          }
-        }
-        window.history.replaceState({}, "", `${location.pathname}?${para}`);
-        navigator.clipboard.writeText(location.href);
-        if(window != window.parent) {
-          window.open(location.href, '_blank')
-        }
-      }
-      var isTesting = false;
-      function ff() {
-        i.srcdoc = h.value + "<style>*{margin:0;paddig:0}html,body{height:100%}" + c.value + "</style><script>" + j.value + "</script>";
-      }ff();
+function f() {
+  fff();
+  navigator.clipboard.writeText(location.href);
+  if (window != window.parent) {
+    window.open(location.href, '_blank')
+  }
+}
+function ff() {
+  if (t) return;
+	t = setTimeout( function (){
+	  t = 0 ;
+    i.srcdoc = h.value + '<style>html,body{height:100%}*{margin:0;padding:0}' + c.value + '</style><script>' + j.value + '</script>'
+	}, 1000 ) ;
+}ff();
+function fff() {
+  para.set("s", Math.round(i.clientWidth * 100 / window.innerWidth));
+  for (let e of ar) {
+    if (e != "s") {
+	    url.searchParams.set(e,encodeURI(eval(e).value));
+    }
+  }
+  window.history.pushState(null,null,url);
+}
 -->
 </script>
 </html>
