@@ -11,7 +11,7 @@
 fetch("https://is.gd/create.php?format=simple&url=https://" + decodeURI(location.host + location.search))
   .then(
     function(u) {
-      return u.json();
+      return u.text();
     }
   )
   .then(
