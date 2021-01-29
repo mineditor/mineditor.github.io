@@ -8,15 +8,15 @@
 </head>
 <body><img id=qr></body>
 <script>
-fetch("https://is.gd/create.php?format=simple&url=https://" + encodeURIComponent(location.host + location.search))
+fetch("https://is.gd/create.php?format=json&url=https://" + encodeURIComponent(location.host + location.search))
   .then(
     function(u) {
-      return u.text();
+      return u.json();
     }
   )
   .then(
     function(e) {
-      qr.src="https://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=" + e;
+      qr.src="https://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=" + e.shorturl;
     }
   )
 </script>
