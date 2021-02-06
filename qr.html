@@ -19,7 +19,7 @@ fetch("https://is.gd/create.php?format=json&url=https://" + encodeURIComponent(l
   )
   .then(
     function(e) {
-      qr.src="https://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=" + e.shorturl;
+      qr.src="https://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=" + e.shorturl;
       url.value = e.shorturl;
     }
   )
